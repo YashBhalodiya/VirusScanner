@@ -14,7 +14,7 @@ class VirusScanner extends StatefulWidget {
 class _VirusScannerState extends State<VirusScanner> {
   String _result = "No file scanned yet";
   final String _apiKey =
-      'YOUR_API_KEY_HERE'; // Replace with your VirusTotal API Key
+      '31d63fb4cf3876cd940b3e79eb7cd6941a44310aec23e095af20d436256793f0'; // Replace with your VirusTotal API Key
 
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();

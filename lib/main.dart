@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:virus_scaner/virus_scanner.dart';
+import 'package:virus_scaner/features/splash/view/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const VirusScanner(),
+      home: const SplashScreen(),
     );
   }
 }
