@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:virus_scaner/features/home/file_upload_screen.dart';
 import 'package:virus_scaner/features/home/upload_file_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,48 +37,90 @@ class _HomeScreenState extends State<HomeScreen> {
           Column(
             children: [
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                padding: EdgeInsets.zero,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          print("Scan Device clicked");
-                          _pageController.animateToPage(0,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOutCubic);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: _currentPage == 0
-                                ? Colors.blue
-                                : Colors.grey[300],
-                            foregroundColor:
-                                _currentPage == 0 ? Colors.white : Colors.black,
-                            elevation: 1,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        child: const Text("Scan Device")),
-                    ElevatedButton(
-                        onPressed: () {
-                          print("Upload file clicked");
-                          _pageController.animateToPage(1,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOutCubic);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: _currentPage == 1
-                                ? Colors.blue
-                                : Colors.grey[300],
-                            foregroundColor:
-                                _currentPage == 1 ? Colors.white : Colors.black,
-                            elevation: 1,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        child: const Text("Upload File")),
+                    Row(
+                      children: [
+                        // Left Button
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              print("Upload File clicked");
+                              _pageController.animateToPage(
+                                0,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOutCubic,
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  color: Colors.white,
+                                  child: Text(
+                                    "Upload File",
+                                    style: TextStyle(
+                                      color: _currentPage == 0
+                                          ? Colors.black
+                                          : Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 2,
+                                  color: _currentPage == 0
+                                      ? Colors.blue
+                                      : Colors.transparent,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        // Right Button
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              print("Scan Device clicked");
+                              _pageController.animateToPage(
+                                1,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOutCubic,
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  color: Colors.white,
+                                  child: Text(
+                                    "Scan Device",
+                                    style: TextStyle(
+                                      color: _currentPage == 1
+                                          ? Colors.black
+                                          : Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 2,
+                                  color: _currentPage == 1
+                                      ? Colors.blue
+                                      : Colors.transparent,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
+
               const SizedBox(
                 height: 30,
               ),
@@ -93,6 +136,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   children: [
                     // First Page
+                    const FileUploadScreen(),
+
+                    // Second Page
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -128,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     children: <Widget>[
                                       buildRow("04", "Virus"),
                                       buildRow("03", "Threats"),
-                                      buildRow("140", "Virus"),
+                                      buildRow("140", "Malware"),
                                       buildRow("155", "Virus"),
                                       buildRow("45", "Virus"),
                                     ],
@@ -164,8 +210,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    // Second Page
-                    const UploadFileScreen(),
                   ],
                 ),
               ),
@@ -174,169 +218,169 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // Bottom Fixed Buttons
 
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black12.withOpacity(0.111),
-                        offset: const Offset(0, -1),
-                        blurRadius: 7,
-                        spreadRadius: 0.5)
-                  ]),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => print("Security Advisor Tapped"),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(15),
-                                decoration: const BoxDecoration(
-                                  color: Colors.orange,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.security,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              const Text(
-                                "Security Advisor",
-                                style: TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => print("Threat Analyzer Tapped"),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(15),
-                                decoration: const BoxDecoration(
-                                  color: Colors.orange,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.warning_amber_rounded,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              const Text(
-                                "Threat Analyzer",
-                                style: TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => print("Hidden Apps Tapped"),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(15),
-                                decoration: const BoxDecoration(
-                                  color: Colors.orange,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.apps,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              const Text(
-                                "Hidden Apps",
-                                style: TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => print("App Statistics Tapped"),
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(15),
-                                decoration: const BoxDecoration(
-                                  color: Colors.orange,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.bar_chart,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              const Text(
-                                "App Statistics",
-                                style: TextStyle(
-                                    fontSize: 13, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  ElevatedButton(
-                    onPressed: () {
-                      print("Scan Again Button Pressed");
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 33, 100, 177),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 90, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    child: const Text(
-                      "Scan Again",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                ],
-              ),
-            ),
-          ),
+          // Positioned(
+          //   bottom: 0,
+          //   left: 0,
+          //   right: 0,
+          //   child: Container(
+          //     padding: const EdgeInsets.symmetric(vertical: 12),
+          //     decoration: BoxDecoration(
+          //         color: Colors.white,
+          //         borderRadius: BorderRadius.circular(12),
+          //         boxShadow: [
+          //           BoxShadow(
+          //               color: Colors.black12.withOpacity(0.111),
+          //               offset: const Offset(0, -1),
+          //               blurRadius: 7,
+          //               spreadRadius: 0.5)
+          //         ]),
+          //     child: Column(
+          //       children: [
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: [
+          //             Expanded(
+          //               child: GestureDetector(
+          //                 onTap: () => print("Security Advisor Tapped"),
+          //                 child: Column(
+          //                   children: [
+          //                     Container(
+          //                       padding: const EdgeInsets.all(15),
+          //                       decoration: const BoxDecoration(
+          //                         color: Colors.orange,
+          //                         shape: BoxShape.circle,
+          //                       ),
+          //                       child: const Icon(
+          //                         Icons.security,
+          //                         color: Colors.white,
+          //                         size: 30,
+          //                       ),
+          //                     ),
+          //                     const SizedBox(height: 5),
+          //                     const Text(
+          //                       "Security Advisor",
+          //                       style: TextStyle(
+          //                           fontSize: 13, fontWeight: FontWeight.bold),
+          //                       textAlign: TextAlign.center,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //             ),
+          //             Expanded(
+          //               child: GestureDetector(
+          //                 onTap: () => print("Threat Analyzer Tapped"),
+          //                 child: Column(
+          //                   children: [
+          //                     Container(
+          //                       padding: const EdgeInsets.all(15),
+          //                       decoration: const BoxDecoration(
+          //                         color: Colors.orange,
+          //                         shape: BoxShape.circle,
+          //                       ),
+          //                       child: const Icon(
+          //                         Icons.warning_amber_rounded,
+          //                         color: Colors.white,
+          //                         size: 30,
+          //                       ),
+          //                     ),
+          //                     const SizedBox(height: 5),
+          //                     const Text(
+          //                       "Threat Analyzer",
+          //                       style: TextStyle(
+          //                           fontSize: 13, fontWeight: FontWeight.bold),
+          //                       textAlign: TextAlign.center,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //         const SizedBox(height: 10),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: [
+          //             Expanded(
+          //               child: GestureDetector(
+          //                 onTap: () => print("Hidden Apps Tapped"),
+          //                 child: Column(
+          //                   children: [
+          //                     Container(
+          //                       padding: const EdgeInsets.all(15),
+          //                       decoration: const BoxDecoration(
+          //                         color: Colors.orange,
+          //                         shape: BoxShape.circle,
+          //                       ),
+          //                       child: const Icon(
+          //                         Icons.apps,
+          //                         color: Colors.white,
+          //                         size: 30,
+          //                       ),
+          //                     ),
+          //                     const SizedBox(height: 5),
+          //                     const Text(
+          //                       "Hidden Apps",
+          //                       style: TextStyle(
+          //                           fontSize: 13, fontWeight: FontWeight.bold),
+          //                       textAlign: TextAlign.center,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //             ),
+          //             Expanded(
+          //               child: GestureDetector(
+          //                 onTap: () => print("App Statistics Tapped"),
+          //                 child: Column(
+          //                   children: [
+          //                     Container(
+          //                       padding: const EdgeInsets.all(15),
+          //                       decoration: const BoxDecoration(
+          //                         color: Colors.orange,
+          //                         shape: BoxShape.circle,
+          //                       ),
+          //                       child: const Icon(
+          //                         Icons.bar_chart,
+          //                         color: Colors.white,
+          //                         size: 30,
+          //                       ),
+          //                     ),
+          //                     const SizedBox(height: 5),
+          //                     const Text(
+          //                       "App Statistics",
+          //                       style: TextStyle(
+          //                           fontSize: 13, fontWeight: FontWeight.bold),
+          //                       textAlign: TextAlign.center,
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //         const SizedBox(height: 30),
+          //         ElevatedButton(
+          //           onPressed: () {
+          //             print("Scan Again Button Pressed");
+          //           },
+          //           style: ElevatedButton.styleFrom(
+          //               backgroundColor:
+          //                   const Color.fromARGB(255, 33, 100, 177),
+          //               padding: const EdgeInsets.symmetric(
+          //                   horizontal: 90, vertical: 15),
+          //               shape: RoundedRectangleBorder(
+          //                   borderRadius: BorderRadius.circular(10))),
+          //           child: const Text(
+          //             "Scan Again",
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //         ),
+          //         const SizedBox(height: 30),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
