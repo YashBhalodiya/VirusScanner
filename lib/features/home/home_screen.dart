@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:virus_scaner/features/home/file_upload_screen.dart';
-import 'package:virus_scaner/features/home/upload_file_screen.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:virus_scanner/features/home/file_upload_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,10 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Virus Scanner",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
+        title: SvgPicture.asset('assets/safe-vitals-logo.svg',
+            height: 40, width: 40),
         centerTitle: true,
         elevation: 2,
         shadowColor: Colors.black.withOpacity(0.5),
@@ -136,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   children: [
                     // First Page
-                    const FileUploadScreen(),
+                    const FileUploadScreen(), // File Upload Screen
 
                     // Second Page
                     Column(
