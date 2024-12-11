@@ -1,4 +1,4 @@
-name: virus_scaner
+name: virus_scanner
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -9,14 +9,35 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
   http: ^0.13.4
   file_picker: ^5.0.0
   fluttertoast: ^8.2.8
+  switcher_button: ^0.0.4
+  simple_circular_progress_bar: ^1.0.2
+  dotted_border: ^2.1.0
+  iconsax: ^0.0.8
+  flutter_svg: ^2.0.9
+  lottie: ^3.0.0
+  simple_animated_button: ^0.0.9
+  provider: ^6.1.2
+  # Add your new dependency here if needed
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/safe-vitals-logo.png"
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/Animation - 1733293422156.gif
+    - assets/do.gif
+    - assets/safe-vitals-logo.svg
+    - assets/file_upload_animation.json
