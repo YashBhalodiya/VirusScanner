@@ -58,12 +58,8 @@ class _FileUploadScreenState extends State<FileUploadScreen>
         child: Column(
           children: <Widget>[
             const SizedBox(height: 0),
-            Lottie.network(
-              'https://lottie.host/9f4ef552-c5a7-47a1-ad69-11abd9c878f4/hk1LLtJd6r.json',
-              width: 200,
-              height: 200,
-              fit: BoxFit.fill,
-            ),
+            Lottie.asset('assets/file_upload_animation.json',
+                width: 200, height: 200, fit: BoxFit.cover),
             // Image.asset(
             //   'assets/Animation - 1733293422156.gif',
             //   width: 200,
