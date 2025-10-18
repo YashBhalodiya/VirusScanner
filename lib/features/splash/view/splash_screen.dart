@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
 class SplashService {
   void navigateToNextScreen(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
         context,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:virus_scanner/demo.dart';
 import 'package:virus_scanner/features/home/file_state.dart';
-import 'package:virus_scanner/features/splash/view/splash_screen.dart';
 
 void main() {
   runApp(
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const Demo(),
     );
   }
 }
